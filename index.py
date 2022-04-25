@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import messagebox
 
+from subprocess import call
+
 import mysql.connector
 
 from database import *
@@ -44,11 +46,13 @@ def verifyLogin():
     args = (username, password)
     cursor.execute(query, args)
     result = cursor.fetchall()
-    if(len(result) > 0):
+    if(len(result) == 0):
         print("Login successful!")
         messagebox.showinfo("Success", "Login successful!")
         main_screen.withdraw()
         login_screen.destroy()
+        call(["python", "main_menu.py"])
+        main_screen.deiconify()
     else:
         print("Login failed!")
         messagebox.showwarning("Failed", "Login failed!")
