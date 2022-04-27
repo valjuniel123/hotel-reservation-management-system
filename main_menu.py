@@ -25,11 +25,11 @@ def toRoomReservation():
 
 global main_screen
 main_screen = Tk()   # create a GUI window 
-main_screen.geometry("300x250") # set the configuration of GUI window 
+main_screen.geometry("400x250") # set the configuration of GUI window 
 main_screen.title("Main Menu") # set the title of GUI window
 
 # create a Form label 
-Label(text="Angeli's Hotel Reservation System", bg="blue", width="300", height="2", font=("Calibri", 13)).pack() 
+Label(text="Angeli's Hotel Reservation System", bg="blue", width="300", height="2", font=("Calibri", 20)).pack() 
 Label(text="").pack() 
  
 # create Room Information Button 

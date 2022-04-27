@@ -14,7 +14,7 @@ def login():
     global login_screen
     login_screen = Toplevel(main_screen)
     login_screen.title("Login")
-    login_screen.geometry("300x250")
+    login_screen.geometry("500x250")
     Label(login_screen, text="Please enter details below to login").pack()
     Label(login_screen, text="").pack()
  
@@ -63,11 +63,11 @@ def verifyLogin():
         
 global main_screen
 main_screen = Tk()   # create a GUI window 
-main_screen.geometry("300x250") # set the configuration of GUI window 
+main_screen.geometry("500x250") # set the configuration of GUI window 
 main_screen.title("Account Login") # set the title of GUI window
 
 # create a Form label 
-Label(text="Choose Login Or Register", bg="blue", width="300", height="2", font=("Calibri", 13)).pack() 
+Label(text="Choose Login, Reserve of Checkout", bg="blue", width="300", height="2", font=("Calibri", 20)).pack() 
 Label(text="").pack() 
  
 # create Login Button 
@@ -76,6 +76,10 @@ Label(text="").pack()
  
 # create a Reservation button
 Button(text="Apply for Reservation", height="2", width="30").pack()
+
+# create a Checkout button
+Button(text="Check Out", height="2", width="30").pack()
+Label(text="").pack()
 
 
 

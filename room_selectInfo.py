@@ -1,8 +1,9 @@
 from tkinter import *
 from tkinter import messagebox
 from tkcalendar import DateEntry
-
 from subprocess import call
+
+# from room_information import toRoomInfo
 
 import mysql.connector
 
@@ -20,11 +21,11 @@ def toLogin():
 global main_screen
 main_screen = Tk()   # create a GUI window 
 main_screen.geometry("300x500") # set the configuration of GUI window 
-main_screen.title("Room Reservation") # set the title of GUI window
+main_screen.title("Room Number 1") # set the title of GUI window
 
 # create a Form label 
-Label(text="Angeli's Hotel Reservation System", bg="blue", width="300", height="1", font=("Calibri", 20)).pack() 
-Label(text="Room Reservation", bg="blue", width="300", height="1", font=("Calibri", 20)).pack() 
+Label(text="Angeli's Hotel Reservation System", bg="blue", width="300", height="1", font=("Calibri", 13)).pack() 
+Label(text="Room Reservation", bg="blue", width="300", height="1", font=("Calibri", 13)).pack() 
 Label(text="").pack() 
  
 # Create an Exit Button
