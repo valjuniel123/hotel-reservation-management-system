@@ -40,24 +40,41 @@ def room_selectInfo(detailsArray):
     Label(roomSelected, text=location, anchor='w').pack(fill='both')
     Label(roomSelected, text="").pack()
     
-    roomStatus = "Status:\t\t" + "Not Occupied"
-    Label(roomSelected, text=roomStatus, anchor='w').pack(fill='both')
-    Label(roomSelected, text="").pack()
+    print(detailsArray[0].__len__())
+    if(detailsArray[0].__len__() > 7):
+        status = detailsArray[0][13]
+    else:
+        status = 0  
+        
+    if(status == 1):
+        roomStatus = "Status:\t\t" + "Occupied"
+        Label(roomSelected, text=roomStatus, anchor='w').pack(fill='both')
+        Label(roomSelected, text="").pack()
     
-    Label(roomSelected, text="Name\tMarco the Phoenix", anchor='w').pack(fill='both')
-    Label(roomSelected, text="").pack()
-    
-    Label(roomSelected, text="").pack()
-    Label(roomSelected, text="Name\tMarco the Phoenix", anchor='w').pack(fill='both')
-    Label(roomSelected, text="").pack()
-    
-    Label(roomSelected, text="").pack()
-    Label(roomSelected, text="Name\tMarco the Phoenix", anchor='w').pack(fill='both')
-    Label(roomSelected, text="").pack()
-    
-    Label(roomSelected, text="").pack()
-    Label(roomSelected, text="Name\tMarco the Phoenixs", anchor='w').pack(fill='both')
-    Label(roomSelected, text="").pack()
+        roomName = "Name:\t\t" + detailsArray[0][9]
+        Label(roomSelected, text=roomName, anchor='w').pack(fill='both')
+        Label(roomSelected, text="").pack()
+        
+        roomContact = "Contact:\t\t" + str(detailsArray[0][10])
+        Label(roomSelected, text=roomContact, anchor='w').pack(fill='both')
+        Label(roomSelected, text="").pack()
+        
+        roomCheckIn = "Check In:\t" + str(detailsArray[0][11])
+        Label(roomSelected, text=roomCheckIn, anchor='w').pack(fill='both')
+        Label(roomSelected, text="").pack()
+        
+        roomCheckOut = "Check Out:\t" + str(detailsArray[0][12])
+        Label(roomSelected, text=roomCheckOut, anchor='w').pack(fill='both')
+        Label(roomSelected, text="").pack()
+        
+        roomGuestKey = "Guest Key:\t" + str(detailsArray[0][14])
+        Label(roomSelected, text=roomGuestKey, anchor='w').pack(fill='both')
+        Label(roomSelected, text="").pack()
+        
+    else:
+        roomStatus = "Status:\t\t" + "Available"
+        Label(roomSelected, text=roomStatus, anchor='w').pack(fill='both')
+        Label(roomSelected, text="").pack()
  
 #SQL FOR ROOMS
 
@@ -100,15 +117,22 @@ def roomChanged(index, value, op):
     counter=0
     print ("Room changed to " + roomSelected.get())
     
-    query = "SELECT * FROM roominformation i JOIN room_type t ON i.roomType = t.roomId WHERE i.roomNum = '" + roomSelected.get() + "'"
+    query = "SELECT * FROM roominformation i JOIN room_type t ON i.roomType = t.roomId JOIN roomreservation r ON i.roomNum = r.roomNum WHERE i.roomNum = '" + roomSelected.get() + "' ORDER BY r.status DESC LIMIT 1"
     cursor.execute(query)
     result = cursor.fetchall()
     if(len(result) > 0):
         print(result)
         room_selectInfo(result)
     else:
-        print("No descriptions available")
-        messagebox.showwarning("Warning", "No descriptions available")
+        query2 = "SELECT * FROM roominformation i JOIN room_type t ON i.roomType = t.roomId WHERE i.roomNum = '" + roomSelected.get() + "' LIMIT 1"
+        cursor.execute(query2)
+        result2 = cursor.fetchall()
+        if(len(result2) > 0):
+            print(result2)
+            room_selectInfo(result2)
+        else:
+            print("No descriptions available")
+            messagebox.showwarning("Warning", "No descriptions available")
 
 ########################### START OF THE PROGRAM ################################
 
