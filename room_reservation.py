@@ -51,7 +51,6 @@ def floorChanged(index, value, op):
     else:
         print("No rooms available")
         messagebox.showwarning("Warning", "No rooms available")
-        login_screen.destroy()
         
 def reserve():
     #Declare variables
