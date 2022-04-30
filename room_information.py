@@ -110,7 +110,7 @@ def floorChanged(index, value, op):
     else:
         print("No rooms available")
         messagebox.showwarning("Warning", "No rooms available")
-        login_screen.destroy()
+        roomSelected.destroy()
         
 def roomChanged(index, value, op):
     detailsArray = []
