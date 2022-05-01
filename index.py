@@ -58,6 +58,17 @@ def verifyLogin():
         messagebox.showwarning("Failed", "Login failed!")
         login_screen.destroy()
       
+def outroom():
+    main_screen.withdraw()
+    print("Checking Out")
+    call(["python", "checkout.py"])
+    main_screen.deiconify()
+    
+def checkRoom():
+    main_screen.withdraw()
+    print("Checking Rooms")
+    call(["python", "roomsAvailable.py"])
+    main_screen.deiconify()
         
  
         
@@ -75,11 +86,11 @@ Button(text="Login", height="2", width="30", command=login).pack()
 Label(text="").pack()
  
 # create a Reservation button
-Button(text="Apply for Reservation", height="2", width="30").pack()
+Button(text="Check Rooms Available", height="2", width="30", command=checkRoom).pack()
 
 # create a Checkout button
-Button(text="Check Out", height="2", width="30").pack()
-Label(text="").pack()
+Button(text="Check Out", height="2", width="30", command=outroom).pack()
+
 
 
 

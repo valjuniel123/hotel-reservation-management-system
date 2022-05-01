@@ -38,7 +38,7 @@ def floorChanged(index, value, op):
     counter=0
     print ("combobox changed to " + floorSelected.get())
     
-    query = "SELECT * FROM roominformation WHERE roomFloor = '" + floorSelected.get() + "'"
+    query = "SELECT * FROM roominformation WHERE roomFloor = '" + floorSelected.get() + "' AND NOT EXISTS (SELECT * FROM roomreservation WHERE roomreservation.roomNum = roominformation.roomNum AND STATUS = 1)"
     cursor.execute(query)
     result = cursor.fetchall()
     if(len(result) > 0):
